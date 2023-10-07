@@ -1,0 +1,84 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #111;
+  color: #fff;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 20px;
+}
+
+#logo {
+  width: 400px;
+  margin-bottom: 20px;
+  max-width: 90%;
+}
+
+.text p {
+  margin: 10px 0;
+  text-align: center;
+}
+
+.email-input {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.email-input input {
+  padding: 10px;
+  background: #fff;
+  color: #111;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  flex-grow: 1;
+}
+
+.email-input button {
+  padding: 10px 20px;
+  background: #e39324;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.email-input button:hover {
+  background: #c8781e;
+}
+
+/* Mobile view adjustments */
+@media (max-width: 768px) {
+  #logo {
+    width: 250px;
+  }
+
+  .text p {
+    font-size: 16px;
+  }
+
+  .email-input {
+    flex-direction: column;
+  }
+
+  .email-input input,
+  .email-input button {
+    width: 100%; /* Make them full width on mobile */
+    margin-bottom: 10px; /* Space them apart */
+  }
+}

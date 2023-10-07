@@ -30,24 +30,32 @@ async function sendEmail() {
 }
 
 async function loadLatestVideos() {
-  const response = await fetch('/api/getYouTubeData');
-  const data = await response.json();
+  try {
+      const response = await fetch('/api/getYouTubeData');
+      const data = await response.json();
+
+      if (data.videos) {
+          const videosContainer = document.getElementById('videosContainer');
   
-  const videosContainer = document.getElementById('videosContainer');
+          data.videos.forEach(item => {
+              const videoId = item.id.videoId;
+              const videoTitle = item.snippet.title;
 
-  data.videos.forEach(item => {
-      const videoId = item.id.videoId;
-      const videoTitle = item.snippet.title;
+              // Create an iframe for each video and add it to the container
+              const iframe = document.createElement('iframe');
+              iframe.src = `https://www.youtube.com/embed/${videoId}`;
+              iframe.title = videoTitle;
+              iframe.width = '200';  
+              iframe.height = '150';  
 
-      // Create an iframe for each video and add it to the container
-      const iframe = document.createElement('iframe');
-      iframe.src = `https://www.youtube.com/embed/${videoId}`;
-      iframe.title = videoTitle;
-      iframe.width = '200';  // Adjust as needed
-      iframe.height = '150';  // Adjust as needed
-
-      videosContainer.appendChild(iframe);
-  });
+              videosContainer.appendChild(iframe);
+          });
+      } else {
+          console.error(data.error || "Failed to fetch videos");
+      }
+  } catch (error) {
+      console.error("Error fetching data:", error);
+  }
 }
 
 // Call the function to load the videos

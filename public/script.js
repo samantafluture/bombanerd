@@ -28,3 +28,27 @@ async function sendEmail() {
       emailInputDiv.innerHTML = '<p>Ops, algo deu errado na conexão!</p>';
   }
 }
+
+async function loadLatestVideos() {
+  const response = await fetch('/api/getYouTubeData');
+  const data = await response.json();
+  
+  const videosContainer = document.getElementById('videosContainer');
+
+  data.videos.forEach(item => {
+      const videoId = item.id.videoId;
+      const videoTitle = item.snippet.title;
+
+      // Create an iframe for each video and add it to the container
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://www.youtube.com/embed/${videoId}`;
+      iframe.title = videoTitle;
+      iframe.width = '200';  // Adjust as needed
+      iframe.height = '150';  // Adjust as needed
+
+      videosContainer.appendChild(iframe);
+  });
+}
+
+// Call the function to load the videos
+loadLatestVideos();

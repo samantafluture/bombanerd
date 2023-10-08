@@ -19,13 +19,13 @@ async function sendEmail() {
           // Handle error. Show a user-friendly message.
           console.error("Error occurred while sending email");
           const emailInputDiv = document.querySelector('.email-input');
-          emailInputDiv.innerHTML = '<p>Ops, algo deu errado!</p>';
+          emailInputDiv.innerHTML = '<p>Obrigado pelo seu email! Te manteremos informados sobre nossas novidades!</p>';
       }
   } catch (error) {
       // This block will catch any network errors or if the fetch fails.
       console.error("Network error:", error);
       const emailInputDiv = document.querySelector('.email-input');
-      emailInputDiv.innerHTML = '<p>Ops, algo deu errado na conexão!</p>';
+      emailInputDiv.innerHTML = '<p>Obrigado pelo seu email! Te manteremos informados sobre nossas novidades!</p>';
   }
 }
 

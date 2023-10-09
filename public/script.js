@@ -14,19 +14,19 @@ async function sendEmail() {
 
       if (result.status === 'success') {
           const emailInputDiv = document.querySelector('.email-input');
-          emailInputDiv.innerHTML = '<p>Obrigado pelo seu email! Te manteremos informados sobre nossas novidades!</p>';
+          emailInputDiv.innerHTML = '<p>Obrigado pelo seu email!</p>';
       } else {
           // Handle error. Show a user-friendly message.
           console.error("Error occurred while sending email");
           const emailInputDiv = document.querySelector('.email-input');
-          emailInputDiv.innerHTML = '<p>Obrigado pelo seu email! Te manteremos informados sobre nossas novidades!</p>';
+          emailInputDiv.innerHTML = '<p>Obrigado pelo seu email!</p>';
       }
   } catch (error) {
       // This block will catch any network errors or if the fetch fails.
       console.error("Network error:", error);
       const emailInputDiv = document.querySelector('.email-input');
-      emailInputDiv.innerHTML = '<p>Obrigado pelo seu email! Te manteremos informados sobre nossas novidades!</p>';
-  }
+      emailInputDiv.innerHTML = '<p>Obrigado pelo seu email!</p>';
+    }
 }
 
 async function loadLatestVideos() {
